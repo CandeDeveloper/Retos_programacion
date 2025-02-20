@@ -18,18 +18,25 @@
 */
 
 function listGifts(carta) {
-    let cartaFiltrada = []
-    carta = carta.split(' ')
+    let regalos = {};
+    carta = carta.split(' ');
 
     carta.map((x) => {
-        if (x !== '') {
-            cartaFiltrada.push({ x })
+   
+        if (x !== '' && !x.includes('_')) {
+
+            if (regalos[x]) {
+                regalos[x]++;
+            } else {
+         
+                regalos[x] = 1;
+            }
         }
-    })
+    });
 
-    return cartaFiltrada
-
+    return regalos;
 }
+
 
 const carta = 'bici  coche balón  _playstation bici'
 // listGifts(carta)
